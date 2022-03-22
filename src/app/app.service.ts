@@ -10,6 +10,7 @@ export class AppService {
   ) {}
 
   getHello(): Promise<string> {
+    this.client.emit('say_hello', 'hi');
     const helloResult: Observable<string> = this.client.send(
       { role: 'hello', cmd: 'hello' },
       'jun',
