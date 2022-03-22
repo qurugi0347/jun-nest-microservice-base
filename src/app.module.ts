@@ -8,8 +8,14 @@ import { AppService } from './app.service';
     ClientsModule.register([
       {
         name: 'HELLO_SERVICE',
-        transport: Transport.REDIS,
-        options: { url: 'redis://127.0.0.1:36379' },
+        transport: Transport.RMQ,
+        options: {
+          urls: ['amqp://localhost:5672'],
+          queue: 'hello',
+          queueOptions: {
+            durable: false,
+          },
+        },
       },
     ]),
   ],
